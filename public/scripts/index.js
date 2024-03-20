@@ -33,4 +33,4 @@ btnSearch.addEventListener("click", (event) => {
   const capacity = capacityInput.value;
   getAllCars(date, capacity);
 });
-getAllCars("", "");
+// getAllCars("", "");
