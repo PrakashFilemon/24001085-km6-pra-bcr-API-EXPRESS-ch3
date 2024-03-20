@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "489331cf-f0ad-44e7-8a8b-2130e2c86244",
+		"name": "Binar Car",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33567815"
+	},
+	"item": [
+		{
+			"name": "Rentar Car",
+			"item": [
+				{
+					"name": "ALL CARS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>ID</th>\r",
+									"        <th>Plate</th>\r",
+									"        <th>Manufacture</th>\r",
+									"        <th>Model</th>\r",
+									"        <th>Image</th>\r",
+									"        <th>Rent Per Day</th>\r",
+									"        <th>Capacity</th>\r",
+									"        <th>Description</th>\r",
+									"        <th>Available At</th>\r",
+									"        <th>Transmission</th>\r",
+									"        <th>Type</th>\r",
+									"        <th>Year</th>\r",
+									"        <th>Options</th>\r",
+									"        <th>Specs</th>\r",
+									"    </tr>\r",
+									"    \r",
+									"    {{#each response.data}}\r",
+									"        <tr id=row_{{@key}}>\r",
+									"            <td>{{id}}</td>\r",
+									"            <td>{{plate}}</td>\r",
+									"            <td>{{manufacture}}</td>\r",
+									"            <td>{{model}}</td>\r",
+									"            <td>{{image}}</td>\r",
+									"            <td>{{rentPerDay}}</td>\r",
+									"            <td>{{capacity}}</td>\r",
+									"            <td>{{description}}</td>\r",
+									"            <td>{{availableAt}}</td>\r",
+									"            <td>{{transmission}}</td>\r",
+									"            <td>{{type}}</td>\r",
+									"            <td>{{year}}</td>\r",
+									"            <td>{{options}}</td>\r",
+									"            <td>{{specs}}</td>\r",
+									"        </tr>\r",
+									"    {{/each}}\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return { response: pm.response.json() }\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"cars"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2024-03-24",
+									"disabled": true
+								},
+								{
+									"key": "availableAt",
+									"value": "22",
+									"disabled": true
+								},
+								{
+									"key": "capacity",
+									"value": "6",
+									"disabled": true
+								},
+								{
+									"key": "available",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CARS ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/cars/6e2bc663-5197-441a-957b-bc75e4a2da7c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"cars",
+								"6e2bc663-5197-441a-957b-bc75e4a2da7c"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6e2bc663-5197-441a-957b-bc75e4a2da7c",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Car",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"plate\": \"F-1886-MON\",\r\n    \"manufacture\": \"Prakash\",\r\n    \"model\": \"LaCrosse\",\r\n    \"image\": \"./images/car09.min.jpg\",\r\n    \"rentPerDay\": 1000000,\r\n    \"capacity\": 6,\r\n    \"description\": \" Rear reading & courtesy lamps. Zone body construction -inc: front/rear crumple zones, hood deformation point.\",\r\n    \"availableAt\": \"2022-03-23T15:49:05.563Z\",\r\n    \"transmission\": \"Automatic\",\r\n    \"available\": true,\r\n    \"type\": \"Extended Cab Pickup\",\r\n    \"year\": 2012,\r\n    \"options\": [\r\n      \"CD (Multi Disc)\",\r\n      \"Keyless Entry\",\r\n      \"Cassette Player\",\r\n      \"Power Windows\",\r\n      \"Rear Window Wiper\",\r\n      \"CD (Single Disc)\",\r\n      \"Third Row Seats\"\r\n    ],\r\n    \"specs\": [\r\n      \"Rear reading & courtesy lamps\",\r\n      \"Zone body construction -inc: front/rear crumple zones, hood deformation point\",\r\n      \"4-wheel/4-channel anti-lock brake system (ABS)\",\r\n      \"Anti-lock 4-wheel performance disc brakes\",\r\n      \"200mm front axle\",\r\n      \"Dual front knee airbags\"\r\n    ]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/cars/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"cars",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Cars",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"plate\": \"DBH-3491\",\r\n        \"manufacture\": \"Prakash\",\r\n        \"model\": \"F0000\",\r\n        \"image\": \"./images/car01.min.jpg\",\r\n        \"rentPerDay\": 200000,\r\n        \"capacity\": 2,\r\n        \"description\": \" Brake assist. Leather-wrapped shift knob. Glove box lamp. Air conditioning w/in-cabin microfilter.\",\r\n        \"availableAt\": \"2024-03-24T15:49:05.563Z\",\r\n        \"transmission\": \"Automatic\",\r\n        \"available\": true,\r\n        \"type\": \"Sedan\",\r\n        \"year\": 2022,\r\n        \"options\": [\r\n            \"Cruise Control\",\r\n            \"Tinted Glass\",\r\n            \"Tinted Glass\",\r\n            \"Tinted Glass\",\r\n            \"AM/FM Stereo\"\r\n        ],\r\n        \"specs\": [\r\n            \"Brake assist\",\r\n            \"Leather-wrapped shift knob\",\r\n            \"Glove box lamp\",\r\n            \"Air conditioning w/in-cabin microfilter\",\r\n            \"Body color folding remote-controlled pwr mirrors\",\r\n            \"Dual-stage front airbags w/occupant classification system\"\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/cars/6e2bc663-5197-441a-957b-bc75e4a2da7c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"cars",
+								"6e2bc663-5197-441a-957b-bc75e4a2da7c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE CAR",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/cars/6e2bc663-5197-441a-957b-bc75e4a2da7c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"cars",
+								"6e2bc663-5197-441a-957b-bc75e4a2da7c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
